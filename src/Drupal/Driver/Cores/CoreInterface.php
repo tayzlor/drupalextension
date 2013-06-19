@@ -67,4 +67,23 @@ interface CoreInterface {
    * @see _drush_bootstrap_drupal_site_validate()
    */
   public function validateDrupalSite();
+
+  /**
+   * Create a role
+   *
+   * @param array $permissions
+   *   An array of permissions to create the role with.
+   *
+   * @return string
+   *   Role ID of newly created role, or FALSE if role creation failed.
+   */
+  public function roleCreate(array $permissions);
+
+  /**
+   * Delete a role
+   *
+   * @param $rid
+   *   A role name to delete.
+   */
+  public function roleDelete($rid);
 }

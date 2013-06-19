@@ -57,6 +57,7 @@ class DrupalDriver implements DriverInterface, DrupalSubContextFinderInterface {
   public function processBatch() {
     $this->getCore()->processBatch();
   }
+
   /**
    * Implements DriverInterface::userAddRole().
    */
@@ -206,4 +207,19 @@ class DrupalDriver implements DriverInterface, DrupalSubContextFinderInterface {
     \taxonomy_term_save($term);
     return $term;
   }
+
+  /**
+   * Implements DriverInterface::roleCreate().
+   */
+  public function roleCreate(array $permissions) {
+    return $this->getCore()->roleCreate($permissions);
+  }
+
+  /**
+   * Implements DriverInterface::roleCreate().
+   */
+  public function roleDelete($rid) {
+    $this->getCore()->roleDelete($rid);
+  }
+
 }

@@ -162,4 +162,25 @@ class Drupal6 implements CoreInterface {
       throw new BootstrapException(sprintf('Could not find a Drupal settings.php file at "%s"', $conf_file));
     }
   }
+
+  /**
+   * Implements CoreInterface::roleCreate().
+   */
+  public function roleCreate(array $permissions) {
+    // TODO: fill in.
+    throw new UnsupportedDriverActionException('No ability to create roles in %s', $this);
+    //db_query("INSERT INTO {permission} (rid, perm) VALUES (%d, '%s')", $role->rid, implode(', ', array_keys($form_state['values'][$role->rid])));
+  }
+
+  /**
+   * Implements CoreInterface::roleDelete().
+   */
+  public function roleDelete($rid) {
+    db_query('DELETE FROM {role} WHERE rid = %d', $rid);
+
+    if (!db_affected_rows()) {
+      throw new \RuntimeException(sprintf('No role "%s" exists.', $rid));
+    }
+  }
+
 }
